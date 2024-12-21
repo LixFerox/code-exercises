@@ -37,15 +37,11 @@ public class Main {
 		System.out.print("Día de la semana: ");
 		String elegirDia = teclado.nextLine();
 		int dia = Integer.parseInt(elegirDia);
-		switch (dia) {
-		case 1 -> System.out.println("Has elegido el día " + dia + ", es Lunes");
-		case 2 -> System.out.println("Has elegido el día " + dia + ", es Martes");
-		case 3 -> System.out.println("Has elegido el día " + dia + ", es Miércoles");
-		case 4 -> System.out.println("Has elegido el día " + dia + ", es Jueves");
-		case 5 -> System.out.println("Has elegido el día " + dia + ", es Viernes");
-		case 6 -> System.out.println("Has elegido el día " + dia + ", es Sábado");
-		case 7 -> System.out.println("Has elegido el día " + dia + ", es Domingo");
-		default -> System.out.println("No has elegido ningún día válido");
+		String[] dias = { "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo" };
+		if (dia >= 1 && dia <= 7) {
+			System.out.println("Has elegido el día " + dia + ", es " + dias[dia - 1]);
+		} else {
+			System.err.println("No has elegido ningún día válido");
 		}
 	}
 
@@ -53,13 +49,17 @@ public class Main {
 		System.out.println("Introduce una calificación entre A-D para comprobar su equivalente numérico");
 		System.out.print("Valor alfabético: ");
 		String valor = teclado.nextLine().toUpperCase();
-		switch (valor) {
-		case "A" -> System.out.println("Has elegido el valor " + valor + ", su equivalente numérico es 11");
-		case "B" -> System.out.println("Has elegido el valor " + valor + ", su equivalente numérico es 12");
-		case "C" -> System.out.println("Has elegido el valor " + valor + ", su equivalente numérico es 13");
-		case "D" -> System.out.println("Has elegido el valor " + valor + ", su equivalente numérico es 14");
-		case "E" -> System.out.println("Has elegido el valor " + valor + ", su equivalente numérico es 15");
-		default -> System.out.println("No has elegido ningín valor alfabético válido");
+		String alfabeto[] = { "A", "B", "C", "D", "E" };
+		int valores[] = { 11, 12, 13, 14, 15 };
+		boolean valorEntontrado = false;
+		for (int i = 0; i < alfabeto.length; i++) {
+			if (alfabeto[i].equals(valor)) {
+				System.out.println("Has elegido el valor " + valor + ", su equivalente numérico es " + valores[i]);
+				valorEntontrado = true;
+			}
+		}
+		if (!valorEntontrado) {
+			System.err.println("No has elegido ningín valor alfabético válido");
 		}
 	}
 
