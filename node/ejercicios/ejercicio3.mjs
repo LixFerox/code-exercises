@@ -1,8 +1,7 @@
-setTimeout(() =>{
-    global.console.log("La variable Global contiene todo")
-}, 1000)
+//Ejercicio que muestra informacion de un archivo
 
-const init = setInterval(() =>{
-    console.log(`En el intervalo ${init}`)
-    clearInterval(init)
-}, 1000)
+import fs from "node:fs"
+
+fs.readFile("./archivo.txt","utf-8", (err, text) =>{
+    console.log(text)
+})

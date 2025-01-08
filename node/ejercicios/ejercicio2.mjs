@@ -1,16 +1,11 @@
-import http from "node:http"
+//Ejercicio que muestra informacion de un archivo 
 
-const port="3000"
+import fs from "node:fs"
 
-const server=http.createServer((req, res) =>{
-    res.statusCode=200
-    res.setHeader("Content-Type", "text/plain")
-    res.write(`Hello Word \n`)
-    res.write(`My first Server web \n`)
-    res.write(`Server is running at port ${port} `)
-    res.end()
-})
-
-server.listen(port, () =>{
-    console.log(`Server is running at port ${port}`)
-})
+const stats = fs.statSync("./archivo.txt")
+console.log("Es un archivo",stats.isFile())
+console.log("Es una carpeta",stats.isDirectory())
+console.log("Tamaño del archivo",stats.size,"bytes")
+console.log("Leyendo el primer archivo...")
+const text = fs.readFileSync("./archivo.txt","utf-8")
+console.log(text)
